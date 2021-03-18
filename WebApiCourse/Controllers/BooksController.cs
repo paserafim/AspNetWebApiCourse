@@ -43,7 +43,7 @@ namespace WebApiCourse.Controllers
         }
 
         [HttpPut("update-book-by-id/{id}")]
-        public IActionResult UpdateBookById(int id, [FromBody] BookVM book)
+        public IActionResult UpdateBookById(int id, [FromBody] BookWithAuthorsVM book)
         {
             var updatedBook = _booksService.UpdateBookById(id, book);
             return Ok(updatedBook);

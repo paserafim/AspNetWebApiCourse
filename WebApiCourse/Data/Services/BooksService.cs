@@ -33,6 +33,7 @@ namespace WebApiCourse.Data.Services
             };
 
             _context.Books.Add(_book);
+            _context.SaveChanges();
 
             // Save Books_Authors
             foreach (var id in book.AuthorIds)
@@ -50,9 +51,26 @@ namespace WebApiCourse.Data.Services
 
         public List<Book> GetAllBooks() => _context.Books.ToList();
 
-        public Book GetBookById(int bookId) => _context.Books.FirstOrDefault(b => b.Id == bookId);
+        public BookWithAuthorsVM GetBookById(int bookId)
+        {
+            var _bookWithAuthors = _context.Books.Where(n => n.Id == bookId).Select(book =>
+                                    new BookWithAuthorsVM
+                                    {
+                                        Title = book.Title,
+                                        Description = book.Description,
+                                        IsRead = book.IsRead,
+                                        DateRead = book.IsRead ? book.DateRead.Value : null,
+                                        Rate = book.Rate,
+                                        Genre = book.Genre,
+                                        CoverUrl = book.CoverUrl,
+                                        PublisherName = book.Publisher.Name,
+                                        AuthorNames = book.Book_Authors.Select(a => a.Author.FullName).ToList()
+                                    }).FirstOrDefault();
 
-        public Book UpdateBookById(int bookId, BookVM book)
+            return _bookWithAuthors;
+        }
+
+        public Book UpdateBookById(int bookId, BookWithAuthorsVM book)
         {
             var _book = _context.Books.FirstOrDefault(b => b.Id == bookId);
 
