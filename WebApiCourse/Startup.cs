@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApiCourse.Data;
+using WebApiCourse.Data.Services;
 
 namespace WebApiCourse
 {
@@ -36,6 +37,9 @@ namespace WebApiCourse
 
             // Configure DBContext with SQL
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(ConnectionString));
+
+            // configure the services
+            services.AddTransient<BooksService>();
 
             services.AddSwaggerGen(c =>
             {
