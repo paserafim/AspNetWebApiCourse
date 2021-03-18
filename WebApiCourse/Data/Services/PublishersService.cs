@@ -26,7 +26,23 @@ namespace WebApiCourse.Data.Services
 
             _context.Publishers.Add(_publisher);
             _context.SaveChanges();
+        }
 
+        public PublisherWithBooksandAuthors GetPublisherData(int publisherId)
+        {
+            var _publisherData = _context.Publishers.Where(p => p.Id == publisherId).Select(n =>
+            new PublisherWithBooksandAuthors
+            {
+                Name = n.Name,
+                BookAuthors = n.Books.Select(b => new BookAuthorVM()
+                {
+                    BookName = b.Title,
+                    BookAuthors = b.Book_Authors.Select(a => a.Author.FullName).ToList()
+                }).ToList()
+
+            }).FirstOrDefault();
+
+            return _publisherData;
         }
 
     }
