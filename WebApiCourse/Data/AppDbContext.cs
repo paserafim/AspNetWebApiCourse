@@ -13,6 +13,6 @@ namespace WebApiCourse.Data
         {
         }
 
-        public DbSet<Book> Books;
+        public DbSet<Book> Books { get; set; }
     }
 }

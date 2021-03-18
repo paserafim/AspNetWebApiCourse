@@ -63,6 +63,9 @@ namespace WebApiCourse
             {
                 endpoints.MapControllers();
             });
+
+            // Seed the database with 2 books
+            AppDbInitializer.Seed(app);
         }
     }
 }
