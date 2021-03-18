@@ -8,7 +8,7 @@ using WebApiCourse.Data.Models;
 
 namespace WebApiCourse.Data
 {
-    public class AppDbInitializer
+    public static class AppDbInitializer
     {
         public static void Seed(IApplicationBuilder applicationBuilder)
         {
