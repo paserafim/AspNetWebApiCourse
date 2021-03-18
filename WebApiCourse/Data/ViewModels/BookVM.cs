@@ -12,8 +12,13 @@ namespace WebApiCourse.Data.ViewModels
         public bool IsRead { get; set; }
         public DateTime? DateRead { get; set; }
         public string Genre { get; set; }
-        public string Author { get; set; }
+        //public string Author { get; set; }
         public int? Rate { get; set; }
         public string CoverUrl { get; set; }
+
+        // Update to matches the M-N
+        public int PublisherId { get; set; }
+        public List<int> AuthorIds { get; set; }
+
     }
 }
