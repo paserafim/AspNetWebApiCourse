@@ -17,5 +17,11 @@ namespace WebApiCourse.Data.Models
         public int? Rate { get; set; }
         public string CoverUrl { get; set; }
         public DateTime DateAdded { get; set; }
+
+        // Navigating Properties
+        // Primary key
+        public int? PublisherId { get; set; }
+        public Publisher Publisher { get; set; }
+
     }
 }

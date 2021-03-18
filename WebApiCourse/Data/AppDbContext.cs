@@ -14,5 +14,6 @@ namespace WebApiCourse.Data
         }
 
         public DbSet<Book> Books { get; set; }
+
     }
 }
