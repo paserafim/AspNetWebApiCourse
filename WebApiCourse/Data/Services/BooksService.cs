@@ -39,5 +39,8 @@ namespace WebApiCourse.Data.Services
         public List<Book> GetAllBooks() => _context.Books.ToList();
 
         public Book GetBookById(int bookId) => _context.Books.FirstOrDefault(b => b.Id == bookId);
+    
+        
+    
     }
 }
