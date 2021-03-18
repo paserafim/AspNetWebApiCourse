@@ -40,6 +40,8 @@ namespace WebApiCourse
 
             // configure the services
             services.AddTransient<BooksService>();
+            services.AddTransient<AuthorsService>();
+            services.AddTransient<PublishersService>();
 
             services.AddSwaggerGen(c =>
             {
@@ -69,7 +71,7 @@ namespace WebApiCourse
             });
 
             // Seed the database with 2 books
-            AppDbInitializer.Seed(app);
+           // AppDbInitializer.Seed(app);
         }
     }
 }
